@@ -101,7 +101,7 @@ function Detail() {
     // console.log("item desde actvity", parametro);
     if (idCart) {
       await fetch(
-        `http://localhost:3002/shoppingCar/${idCart}`,
+        `https://wanderlust-drab.vercel.app/shoppingCar/${idCart}`,
         {
           method: "PUT",
           headers: {

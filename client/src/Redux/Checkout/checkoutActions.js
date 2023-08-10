@@ -5,12 +5,14 @@ export const CREATE_ORDER = "CREATE_ORDER";
 export const GET_ALL_BILLS = "GET_ALL_BILLS"
 export const CREATE_ITINERARY = "CREATE_ITINERARY"
 
+const URL = "https://wanderlust-drab.vercel.app";
+
 //crear la factura
 export const post_bill= (datos) => {
   // console.log('el idCart en action', datos)
   return async (dispatch) => {
     try {
-      const response = await axios.post("http://localhost:3002/bill/", datos)
+      const response = await axios.post(`${URL}/bill/`, datos)
       const data = response.data
       console.log('la factura', data)
 
@@ -31,7 +33,7 @@ export const create_order = (order) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3002/payment/create-order",
+        `${URL}/payment/create-order`,
         order
       );
       const paymentLink = response.data;            
@@ -53,7 +55,7 @@ export const create_order = (order) => {
 export const get_all_bills= () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3002/bill/");
+      const response = await axios.get(`${URL}/bill/`);
       const data = response.data
       console.log('all bills', data)
 
@@ -71,7 +73,7 @@ export const get_all_bills= () => {
 export const create_itinerary = (info) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("http://localhost:3002/itinerary/", info);
+      const response = await axios.post(`${URL}/itinerary/`, info);
       const data = response.data
       console.log('res action itinerario', data)
       return dispatch({

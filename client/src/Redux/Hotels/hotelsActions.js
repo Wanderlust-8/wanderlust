@@ -5,10 +5,12 @@ export const ADD_HOTEL = "ADD_HOTEL";
 export const GET_HOTEL_BY_ID = "GET_HOTEL_BY_ID";
 export const SEARCH_HOTELS = "SEARCH_HOTELS";
 
+const URL = "https://wanderlust-drab.vercel.app";
+
 export const fetchHotels = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3002/hotels");
+      const response = await axios.get(`${URL}/hotels`);
       const data = response.data;
       return dispatch({
         type: FETCH_HOTELS,
@@ -24,7 +26,7 @@ export const addHotels = (newHotel) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3002/hotels",
+        `${URL}/hotels`,
         newHotel
       );
       const data = response.data;
@@ -41,7 +43,7 @@ export const addHotels = (newHotel) => {
 export const getHotelById = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3002/hotels/${id}`);
+      const response = await axios.get(`${URL}/hotels/${id}`);
       const data = response.data;
       return dispatch({
         type: GET_HOTEL_BY_ID,
@@ -57,7 +59,7 @@ export const searchHotels = (word) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        "http://localhost:3002/hotels?title=${word}"
+        `${URL}/hotels?title=${word}`
       );
       const data = response.data;
       return dispatch({

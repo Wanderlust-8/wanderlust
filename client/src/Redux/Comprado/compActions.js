@@ -2,10 +2,12 @@ import axios from "axios";
 
 export const TRAER_FACTURAS_COMPRADAS = "TRAER_FACTURAS_COMPRADAS";
 
+const URL = "https://wanderlust-drab.vercel.app";
+
 export const traerFacturas = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3002/bill/");
+      const response = await axios.get(`${URL}/bill/`);
       const data = response.data;
       return dispatch({
         type: TRAER_FACTURAS_COMPRADAS,

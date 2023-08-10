@@ -8,6 +8,8 @@ export const CHECKUSER_SHOPPING = "CHECKUSER_SHOPPING";
 export const SAVE_ITEM_DB = "SAVE_ITEM_DB";
 export const SET_ITEM = "SET_ITEM";
 
+const URL = "https://wanderlust-drab.vercel.app";
+
 //agrega el item al estado global
 export const add_to_cart = (item) => {
   // console.log("esto es item en add to cart:", item);
@@ -20,7 +22,7 @@ export const add_to_cart = (item) => {
 export const set_item = (idCart, item) => {
   return async (dispatch) => {
     try {
-      await axios.put(`http://localhost:3002/shoppingCar/${idCart}`, item);
+      await axios.put(`${URL}/shoppingCar/${idCart}`, item);
       return dispatch({
         type: SET_ITEM,
         payload: item,
@@ -37,7 +39,7 @@ export const userShopping = (uid) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3002/shoppingCar/user/${uid}`
+        `${URL}/shoppingCar/user/${uid}`
       );
       const data = response.data;
       // console.log("esto es data de usershopping:", data);
@@ -60,7 +62,7 @@ export const remove_one_from_cart = (item) => {
   return async (dispatch) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3002/shoppingCar/item/${id}`
+        `${URL}/shoppingCar/item/${id}`
       );
       // console.log("LA RESP DE LA ELIMINACION", response.data);
       return dispatch({
@@ -78,7 +80,7 @@ export const remove_one_from_cart = (item) => {
 export const clean_cart = (idCart) => {
   return async (dispatch) => {
     try {
-      await axios.delete(`http://localhost:3002/shoppingCar/${idCart}`);
+      await axios.delete(`${URL}/shoppingCar/${idCart}`);
       // const data = response.data;
       return dispatch({
         type: CLEAN_CART,

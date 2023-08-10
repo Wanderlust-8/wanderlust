@@ -18,12 +18,12 @@ export const FETCH_ORIGIN_CITIES ="FETCH_ORIGIN_CITIES"
 export const PUT_PACKAGE = "PUT_PACKAGE"
 
 
-
+const URL = "https://wanderlust-drab.vercel.app";
 
 export const fetchPackages = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3002/packages");
+      const response = await axios.get(`${URL}/packages`);
       const data = response.data;
       return dispatch({
         type: FETCH_PACKAGES,
@@ -39,7 +39,7 @@ export const addPackages = (newPackage) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3002/packages",
+        `${URL}/packages`,
         newPackage
       );
       const data = response.data;
@@ -56,7 +56,7 @@ export const addPackages = (newPackage) => {
 export const getPackageById = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3002/packages/${id}`);
+      const response = await axios.get(`${URL}/packages/${id}`);
       const data = response.data;
       
       return dispatch({
@@ -72,7 +72,7 @@ export const getPackageById = (id) => {
 export const fetchOriginCities = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3002/cities-origins");
+      const response = await axios.get(`${URL}/cities-origins`);
       const data = response.data;
       return dispatch({
         type: FETCH_ORIGIN_CITIES,
@@ -178,7 +178,7 @@ export function reset (){
 export const put_package = (idProduct, item) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put(`http://localhost:3002/packages/${idProduct}`, item)
+      const response = await axios.put(`${URL}/packages/${idProduct}`, item)
       const data = response.data
       console.log(data)
       return dispatch({

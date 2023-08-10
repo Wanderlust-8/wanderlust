@@ -6,10 +6,12 @@ export const GET_ACTIVITY_BY_ID = "GET_ACTIVITY_BY_ID";
 export const SEARCH_ACTIVITYS = "SEARCH_ACTIVITYS";
 export const ADD_ACTIVITYS = "ADD_ACTIVITYS"
 
+const URL = "https://wanderlust-drab.vercel.app";
+
 export const fetchActivitys = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3002/activitys");
+      const response = await axios.get(`${URL}/activitys`);
       const data = response.data;
       return dispatch({
         type: FETCH_ACTIVITYS,
@@ -25,7 +27,7 @@ export const addActivity = (newActivity) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3002/activitys",
+        `${URL}/activitys`,
         newActivity
       );
       const data = response.data;
@@ -43,7 +45,7 @@ export const addActivities = (newActivities) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost:3002/activity/massive",
+        `${URL}/activity/massive`,
         newActivities
       );
       const data = response.data;
@@ -61,7 +63,7 @@ export const addActivities = (newActivities) => {
 export const getActivityById = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3002/activitys/${id}`);
+      const response = await axios.get(`${URL}/activitys/${id}`);
       const data = response.data;
       return dispatch({
         type: GET_ACTIVITY_BY_ID,
@@ -77,7 +79,7 @@ export const searchActivitys = (word) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3002/activitys?title=${encodeURIComponent(word)}`
+        `${URL}/activitys?title=${encodeURIComponent(word)}`
       );
       const data = response.data;
       return dispatch({
