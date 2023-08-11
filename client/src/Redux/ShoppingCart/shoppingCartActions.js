@@ -35,7 +35,7 @@ export const set_item = (idCart, item) => {
 
 //trae la info de X carrito
 export const userShopping = (uid) => {
-  // console.log("uid en ACTION:", uid);
+  console.log("uid en ACTION:", uid);
   return async (dispatch) => {
     try {
       const response = await axios.get(`${URL}/shoppingCar/user/${uid}`);

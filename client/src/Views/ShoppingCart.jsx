@@ -28,6 +28,7 @@ const ShoppingCart = () => {
   const items = currentUser ? cartItems : localStorageItems || [];
   console.log('los items', items)
 
+ 
   
 
   useEffect(() => {
@@ -86,8 +87,16 @@ const ShoppingCart = () => {
       navigate("/checkout");
     }
   }
-  
 
+   
+  if (!items || items === []) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-verdeFooter text-3xl font-bold">Cargando...</p>
+      </div>
+    );
+  }
+  
 
   return (
     <div>

@@ -57,7 +57,7 @@ const Packages = () => {
                 </li>
               ))}
 
-              <h4 className="text-gray-400">USD {order.fullValue}</h4>
+              <h4 className="text-gray-400">USD {order.totalPrice}</h4>
               <h4 className="text-gray-400">
                 Comprado el {order.createdAt.split("T")[0].toString()}
               </h4>

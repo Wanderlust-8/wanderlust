@@ -43,7 +43,7 @@ const addSuscribe = async (email) =>{
         const suscribe = {
           from: "wanderlusthenry8@gmail.com",
           to: `${newSuscribe.email}`,
-          subject: "Te has suscripto al newslatter de Wanderlust",
+          subject: "Te has suscrito al newslatter de Wanderlust",
           html: htmlContent,
         };
     
