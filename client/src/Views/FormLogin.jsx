@@ -12,7 +12,6 @@ import { useAuth } from "../Context/authContext";
 import { toast } from "react-toastify";
 import { userShopping } from "../Redux/ShoppingCart/shoppingCartActions";
 import { GrFormClose } from "react-icons/gr";
-import { adminTrue } from "../Redux/UserAdmin/userAdminAction";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +25,6 @@ const LoginPage = () => {
 
   const user = useSelector((state) => state.users.user);
   const user1 = useSelector((state) => state.users.usersList);
-  // const user2 = useSelector((state) => state.users.usersFiltered);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
@@ -43,34 +41,30 @@ const LoginPage = () => {
       setErrorMsg(error);
       toast.error(error);
     } else if (currentUser) {
-      // const find = user1.find((us) => us.uid === currentUser.uid);
-      // const profileStorage = find;
-      // localStorage.setItem("profileStorage", JSON.stringify(profileStorage));
-      // const getProfileStorage = JSON.parse(
-      //   localStorage.getItem("profileStorage")
-      // );
-      // console.log("getProfileStorage", getProfileStorage);
+      localStorage.setItem("current", JSON.stringify(currentUser));
+      const getProfileStorage = JSON.parse(localStorage.getItem("current"));
 
-      // //if(profileStorage.locked)  ???
-      // if (getProfileStorage.locked) {
-      //   logout();
-      navigate("/home");
-      //   toast.error("Usuario bloqueado", {
-      //     position: toast.POSITION.TOP_CENTER,
-      //     autoClose: 3000,
-      //   });
-      // } else {
-      //   if (getProfileStorage.profile === 1) {
-      //     toast.success(`Bienvenido ${currentUser.displayName}!`);
+      if (getProfileStorage && user1) {
+        console.log("que no encuentra el storage?", getProfileStorage);
+        console.log("o el current user del global?", user1);
+        const find = user1.find((us) => us.uid === getProfileStorage.uid);
+        localStorage.setItem("user", JSON.stringify(find));
 
-      //     navigate("/home");
-      //   } else {
-      //     toast.success(`Bienvenido ${currentUser.displayName}!`);
+        if (!find.locked) {
+          if (find.profile === 2) {
+            navigate("/admin");
+          } else if (find.profile === 1) {
+            navigate("/home");
+          }
+        } else {
+          logout();
+          navigate("/home");
 
-      //     dispatch(adminTrue(2));
-      //     navigate("/admin");
-      // }
-      // }
+          setTimeout(function () {
+            window.alert("Usuario Bloqueado");
+          }, 1500);
+        }
+      }
     }
     return () => {
       setErrorMsg("");
@@ -136,6 +130,7 @@ const LoginPage = () => {
     } catch (error) {
       setErrorMsg(error.message);
       console.log(error);
+      console.log("wtf", currentUser);
     }
   };
 
