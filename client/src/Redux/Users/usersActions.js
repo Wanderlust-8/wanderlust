@@ -35,6 +35,7 @@ export const fetchUsers = () => {
     try {
       const response = await axios.get(`${URL}/users`);
       const data = response.data;
+      console.log("Response user", response.data)
       return dispatch({
         type: FETCH_USERS,
         payload: data,
