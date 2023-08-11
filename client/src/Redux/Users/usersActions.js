@@ -57,7 +57,7 @@ export const addUser = (newUser) => {
         payload: user,
       });
       const cartResponse = await axios.post(
-        `${URL}/shoppingCar/user/${user.uid}`
+        `${URL}/shoppingCar/users/${user.uid}`
       );
       dispatch(userShopping(user.uid));
       //   const response = await axios.get(
