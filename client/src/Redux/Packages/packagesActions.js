@@ -17,8 +17,8 @@ export const SET_ORIGIN_CITY_FILTER = "SET_ORIGIN_CITY_FILTER";
 export const FETCH_ORIGIN_CITIES = "FETCH_ORIGIN_CITIES";
 export const PUT_PACKAGE = "PUT_PACKAGE";
 
-// const URL = "https://wanderlust-drab.vercel.app";
-const URL = "http://localhost:3002";
+const URL = "https://wanderlust-drab.vercel.app";
+// const URL = "http://localhost:3002";
 
 export const fetchPackages = () => {
   return async (dispatch) => {

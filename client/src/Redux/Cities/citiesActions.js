@@ -8,8 +8,8 @@ export const GET_CITY_ORIGIN = "GET_CITY_ORIGIN";
 export const ADD_ORIGIN_CITY = "ADD_ORIGIN_CITY";
 export const FETCH_ORIGIN_CITIES = "FETCH_ORIGIN_CITIES";
 
-// const URL = "https://wanderlust-drab.vercel.app";
-const URL = "http://localhost:3002";
+const URL = "https://wanderlust-drab.vercel.app";
+// const URL = "http://localhost:3002";
 
 export const fetchCities = () => {
   return async (dispatch) => {
