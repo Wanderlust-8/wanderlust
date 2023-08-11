@@ -27,7 +27,7 @@ code {
   .logo {
     background-image: url(./assets/Logo2.png);
     background-repeat: no-repeat;
-    background-size: 80% 100%;
+    background-size: 80% 80%;
   }
   .fontPoppins {
     font-family: "poppins";
