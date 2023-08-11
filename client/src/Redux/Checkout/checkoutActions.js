@@ -5,7 +5,8 @@ export const CREATE_ORDER = "CREATE_ORDER";
 export const GET_ALL_BILLS = "GET_ALL_BILLS"
 export const CREATE_ITINERARY = "CREATE_ITINERARY"
 
-const URL = "https://wanderlust-drab.vercel.app";
+// const URL = "https://wanderlust-drab.vercel.app";
+const URL = "https://localhost:3002";
 
 //crear la factura
 export const post_bill= (datos) => {

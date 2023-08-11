@@ -4,9 +4,9 @@ const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 //Para trabajo local
-// const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_BASE } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_BASE } = process.env;
 //para deploy
-const { DB_DEPLOY } = process.env;
+// const { DB_DEPLOY } = process.env;
 const TypePackageModel = require("./models/TypePackage");
 const PackageModel = require("./models/Package");
 const AirlineModel = require("./models/Airline");
@@ -29,24 +29,24 @@ const PaymentDetailModels = require("./models/PaymentDetail");
 const NewslatterModels = require("./models/Newslatter");
 
 //Para conexion local
-// const sequelize = new Sequelize(
-//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_BASE}`,
-//   { logging: false, native: false }
-// );
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_BASE}`,
+  { logging: false, native: false }
+);
 
 //conexion deploy
-const sequelize = new Sequelize(
-  DB_DEPLOY,
-  { logging: false,
-    native: false,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false, // Solo para desarrollo local. En producción, configúralo correctamente.
-      },
-    },
-  }
-);
+// const sequelize = new Sequelize(
+//   DB_DEPLOY,
+//   { logging: false,
+//     native: false,
+//     dialectOptions: {
+//       ssl: {
+//         require: true,
+//         rejectUnauthorized: false, // Solo para desarrollo local. En producción, configúralo correctamente.
+//       },
+//     },
+//   }
+// );
 
 TypePackageModel(sequelize);
 PackageModel(sequelize);

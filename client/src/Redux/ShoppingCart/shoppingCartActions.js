@@ -7,8 +7,8 @@ export const CLEAN_CART = "CLEAN_CART";
 export const CHECKUSER_SHOPPING = "CHECKUSER_SHOPPING";
 export const SAVE_ITEM_DB = "SAVE_ITEM_DB";
 export const SET_ITEM = "SET_ITEM";
-
-const URL = "https://wanderlust-drab.vercel.app";
+const URL = "https://localhost:3002";
+// const URL = "https://wanderlust-drab.vercel.app";
 
 //agrega el item al estado global
 export const add_to_cart = (item) => {

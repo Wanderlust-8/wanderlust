@@ -18,7 +18,8 @@ export const FETCH_ORIGIN_CITIES ="FETCH_ORIGIN_CITIES"
 export const PUT_PACKAGE = "PUT_PACKAGE"
 
 
-const URL = "https://wanderlust-drab.vercel.app";
+// const URL = "https://wanderlust-drab.vercel.app";
+const URL = "https://localhost:3002";
 
 export const fetchPackages = () => {
   return async (dispatch) => {

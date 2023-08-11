@@ -5,7 +5,8 @@ export const ADD_COUNTRY = "ADD_COUNTRY";
 export const GET_COUNTRY_BY_ID = "GET_COUNTRY_BY_ID";
 export const SEARCH_COUNTRIES = "SEARCH_COUNTRIES";
 
-const URL = "https://wanderlust-drab.vercel.app";
+// const URL = "https://wanderlust-drab.vercel.app";
+const URL = "https://localhost:3002";
 
 export const fetchCountries = () => {
   return async (dispatch) => {
