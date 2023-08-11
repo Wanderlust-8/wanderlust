@@ -47,5 +47,11 @@ router.post('/massive', async(req, res) => {
    }
 });
 
+//para crear ventas aleatorias
+// {
+// 	"nventas": 5
+		
+// }
+
 
 module.exports = router;
