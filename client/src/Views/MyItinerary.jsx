@@ -11,6 +11,8 @@ import { fetchHotels } from "../Redux/Hotels/hotelsActions";
 import NavBar from "../Components/NavBar";
 import ReviewRating from "../Components/ReviewRating";
 import { get_all_bills } from "../Redux/Checkout/checkoutActions";
+import Sidebar from "../Components/SideBar";
+import Footer from "../Components/Footer";
 
 function MyItinerary() {
   const dispatch = useDispatch();
@@ -87,17 +89,22 @@ function MyItinerary() {
       <div className="bg-verdeFooter ">
         <NavBar />
       </div>
-      <div id="contenedor de todo" className="fontPoppins">
-        <div className="text-xl mt-8 ml-40 p-2 w-3/4 h-auto">
+      <div className="grid grid-cols-4 gap-4">
+      <div className="col-span-1">
+        <Sidebar />
+        </div>
+
+      <div id="contenedor de todo" className="fontPoppins col-span-3">
+        <div className="text-xl mt-8 p-2 w-3/4 h-auto">
           <h1 className="text-xl font-bold mb-8">
             {thispackage.User?.name} prepárate para conocer{" "}
             {paquete.Country?.name}...
           </h1>
-          <span className="text-left ml-40 block text-s">
+          <span className="text-left block text-s">
             Llegarás a la ciudad de {paquete.City?.name} el{" "}
             {paquete.initialDate.split("/").reverse().join("/")}
           </span>
-          <span className="mb-4 text-left ml-40 text-s block">
+          <span className="mb-4 text-left text-s block">
             Tendras {paquete.duration} días para aventurarte en este maravilloso
             destino!
           </span>
@@ -106,7 +113,7 @@ function MyItinerary() {
         <div id="contenedor de itinerario">
           <div className=" flex justify-center items-center">
             <div className="w-[700px] h-auto rounded m-5 bg-gray-300 flex flex-col justify-around items-start p-4">
-              <span className="ml-1 font-bold mb-2">Detalles del vuelo</span>
+              <span className="ml-1 font-bold mb-2">Detalles del vuelo:</span>
               <span className="ml-5 mb-4">
                 Tu aerolínea en este viaje es {airlineName}
               </span>
@@ -126,7 +133,7 @@ function MyItinerary() {
           <div className=" flex justify-center items-center">
             <div className="w-[700px] h-auto rounded m-5 bg-gray-300 flex flex-col justify-around items-start p-4">
               <span className="ml-1 font-bold mb-2">
-                Detalles del Hospedaje
+                Detalles del Hospedaje:
               </span>
               <span className="ml-5 font-semibold">Tu hotel es</span>
 
@@ -139,7 +146,7 @@ function MyItinerary() {
 
           <div className=" flex justify-center items-center">
             <div className="w-[700px] h-auto rounded m-5 bg-gray-300 flex flex-col justify-around items-start p-4">
-              <span className="ml-1 font-bold mb-2">Actividades incluídas</span>
+              <span className="ml-1 font-bold mb-2">Actividades incluídas:</span>
               {paquete &&
                 paquete.Activities?.map((el, index) =>
                   el.included === true ? (
@@ -159,7 +166,7 @@ function MyItinerary() {
           <div className=" flex justify-center items-center">
             <div className="w-[700px] h-auto rounded m-5 bg-gray-300 flex flex-col justify-around items-start p-4">
               <span className="ml-1 font-bold mb-2">
-                Actividades que compraste
+                Actividades que compraste:
               </span>
               {activities_bought &&
                 activities_bought.map((el, index) => (
@@ -171,13 +178,13 @@ function MyItinerary() {
           </div>
 
          <div className="mb-6 mt-8">
-          <span className="font-semibold mt-8 p-2 w-3/4 h-auto text-l"> Te sugerímos el siguiente itinerario para que organíces tu estadía:</span>
+          <span className="font-semibold mt-8 p-2 w-[700px] h-auto text-xl"> Te sugerímos el siguiente itinerario para que organíces tu estadía:</span>
 
          </div>
 
 
-          <div className="flex justify-center">
-  <div className="grid grid-cols-1 gap-4 w-full md:w-2/3 lg:w-1/2 mb-10">
+          <div className="flex justify-center items-center">
+  <div className="grid grid-cols-1 gap-2 w-[700px] md:w-2/3 lg:w-1/2 mb-10">
     {itineraryArray &&
       itineraryArray.map((el, index) => (
         <div
@@ -188,7 +195,7 @@ function MyItinerary() {
           <p className="text-gray-700">{el.itinerary}</p>
           <span className="flex ml-5 mt-4 text-xs">Agrega una nota</span>
         <textarea
-          className="border-none w-[600px] flex ml-5 mt-2 rounded-md text-xs"
+          className="border-none w-4/5 flex ml-5 mt-2 rounded-md text-xs"
           name=""
           id=""
           cols="1"
@@ -201,6 +208,12 @@ function MyItinerary() {
 </div>
         </div>
       </div>
+      </div>
+
+      <div className="mt-[80px]">
+        <Footer />
+      </div>
+      
     </>
   );
 }

@@ -1,15 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { authContext } from "../Context/authContext";
 import {
-  BsHouseDoor,
+  // BsHouseDoor,
   BsBox,
-  BsGraphUp,
-  BsCardChecklist,
+  // BsGraphUp,
+  // BsCardChecklist,
   BsPerson,
   BsBoxArrowInRight,
 } from "react-icons/bs";
 
 function Sidebar() {
+  const { logout } = useContext(authContext);
+  const navigate = useNavigate();
+
+  const handleLogoutClick = (event) => {
+    logout();
+
+    console.log("logout");
+    navigate("/home");
+  };
+
+  
   return (
     <div className="flex flex-col justify-between w-64 min-h-screen bg-white text-black px-6 py-4 rounded-lg shadow-lg overflow-auto">
       <ul>
@@ -17,14 +29,14 @@ function Sidebar() {
           <BsBox className="mr-4" />
           <Link to="/userProfile/packages">Paquetes</Link>
         </li>
-        <li className="mb-6 flex items-center">
+        {/* <li className="mb-6 flex items-center">
           <BsGraphUp className="mr-4" />
           <Link to="/activity">Actividades</Link>
         </li>
         <li className="mb-6 flex items-center">
           <BsCardChecklist className="mr-4" />
           <Link to="/itinerary">Itinerario</Link>
-        </li>
+        </li> */}
         <li className="mb-6 flex items-center">
           <BsPerson className="mr-4" />
           <Link to="/userProfile/profile">Perfil</Link>
@@ -33,7 +45,7 @@ function Sidebar() {
       <ul>
         <li className="mb-6 flex items-center">
           <BsBoxArrowInRight className="mr-4" />
-          <Link to="/logout">Cerrar Sesion</Link>
+          <button onClick={() => {handleLogoutClick()}}>Cerrar Sesion</button>
         </li>
       </ul>
     </div>

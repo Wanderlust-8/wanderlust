@@ -13,11 +13,13 @@ import { authContext } from "../Context/authContext";
 import { userShopping } from "../Redux/ShoppingCart/shoppingCartActions";
 import { fetchUsers } from "../Redux/Users/usersActions";
 import { adminTrue } from "../Redux/UserAdmin/userAdminAction";
+
 function Home() {
   const dispatch = useDispatch();
   const packages = useSelector((state) => state.packages.packagesList);
   const idCart = useSelector((state) => state.carrito.idCart);
 
+  console.log('elidcart', idCart)
   const { currentUser } = useContext(authContext);
 
   if (currentUser) {
