@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPackages } from "../Redux/Packages/packagesActions";
 import { fetchAirlines } from "../Redux/Airlines/airlinesActions";
-import { fetchCities } from "../Redux/Cities/citiesActions";
+import { fetchCities} from "../Redux/Cities/citiesActions";
 import { fetchContinents } from "../Redux/Continent/continentActions";
 import { fetchCountries } from "../Redux/Country/countriesActions";
 import { fetchHotels } from "../Redux/Hotels/hotelsActions";
@@ -20,7 +20,7 @@ import SidebarAdmin from "../Components/SideBarAdmin";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import axios from "axios";
-import { validationCreateForm } from "./ValidationAdminForm";
+// import { validationCreateForm } from "./ValidationAdminForm";
 
 const Form = () => {
   const continents = useSelector((state) => state.continents.continentsList);
@@ -36,28 +36,27 @@ const Form = () => {
 
   const dispatch = useDispatch();
 
-  const [errors, setErrors] = useState({
-    title: "",
-    description: "",
-    initialDate: "",
-    finalDate: "",
-    totalLimit: "",
-    standarPrice: "",
-    promotionPrice: "",
-    service: "",
-    duration: "",
-    originCity: "", //salida
-    idAirline: "",
-    outboundFlight: "",
-    returnFlight: "",
-    image: "",
-    qualification: "",
-    idContinent: "",
-    idCountry: "",
-    idCity: "", // destino
-    idHotel: "",
-    activitys: [],
-  });
+  // const [errors, setErrors] = useState({
+  //   title: "",
+  //   description: "",
+  //   initialDate: "",
+  //   finalDate: "",
+  //   totalLimit: "",
+  //   standarPrice: "",
+  //   promotionPrice: "",
+  //   service: "",
+  //   duration: "",
+  //   originCity: "", //salida
+  //   idAirline: "",
+  //   outboundFlight: "",
+  //   returnFlight: "",
+  //   image: "",
+  //   idContinent: "",
+  //   idCountry: "",
+  //   idCity: "", // destino
+  //   idHotel: "",
+  //   activitys: [],
+  // });
 
   useEffect(() => {
     dispatch(fetchAirlines());
@@ -93,6 +92,7 @@ const Form = () => {
   });
 
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [filteredCities, setFilteredCities] = useState([]);
 
   const handleContinentChange = (event) => {
     const selectedContinentId = parseInt(event.target.value);
@@ -107,15 +107,14 @@ const Form = () => {
       idCity: "", // Reinicia la ciudad seleccionada cuando cambia el continente
     });
 
-    setErrors(
-      validationCreateForm({
-        ...input,
-        idContinent: selectedContinentId,
-      })
-    );
+    // setErrors(
+    //   validationCreateForm({
+    //     ...input,
+    //     idContinent: selectedContinentId,
+    //   })
+    // );
   };
 
-  const [filteredCities, setFilteredCities] = useState([]);
 
   const handleCountryChange = (event) => {
     const selectedCountryId = parseInt(event.target.value);
@@ -128,12 +127,12 @@ const Form = () => {
       idCountry: selectedCountryId,
       idCity: "", // Reiniciar la ciudad seleccionada cuando cambie el país
     });
-    setErrors(
-      validationCreateForm({
-        ...input,
-        idCountry: selectedCountryId,
-      })
-    );
+    // setErrors(
+    //   validationCreateForm({
+    //     ...input,
+    //     idCountry: selectedCountryId,
+    //   })
+    // );
   };
 
   const [filteredHotels, setFilteredHotels] = useState([]);
@@ -149,12 +148,12 @@ const Form = () => {
       idCity: selectedCityId,
       idHotel: "", // Reiniciar la ciudad seleccionada cuando cambie el país
     });
-    setErrors(
-      validationCreateForm({
-        ...input,
-        idCity: selectedCityId,
-      })
-    );
+    // setErrors(
+    //   validationCreateForm({
+    //     ...input,
+    //     idCity: selectedCityId,
+    //   })
+    // );
   };
 
   const handleInputPromotionPrice = (event) => {
@@ -167,68 +166,51 @@ const Form = () => {
   };
 
   const handleInputChange = (event) => {
-
     const { name, value } = event.target;
-    let parsedValue;
   
-
+    let parsedValue = {
+      ...input,
+      [name]: value,
+    };
+  
     if (name === "idCity") {
       const selectedCityId = parseInt(value);
       const selectedCity = cities.find((city) => city.id === selectedCityId);
-
+  
       if (selectedCity) {
         setDestinationCity(selectedCity.name);
-
+  
         const associatedCountry = countries.find(
           (country) => country.id === selectedCity.idCountry
         );
-
+  
         if (associatedCountry) {
           setDestinationCountry(associatedCountry.name);
           parsedValue = {
-            ...input,
+            ...parsedValue,
             idCity: selectedCityId,
             idCountry: associatedCountry.id,
           };
         }
       }
     } else if (
-      name === "qualification" ||
       name === "originCity" ||
       name === "idHotel" ||
       name === "idAirline" ||
-      name === "standarPrice"||
+      name === "standarPrice" ||
       name === "duration" ||
-      name === "totalLimit" 
+      name === "totalLimit"
     ) {
       parsedValue = {
-        ...input,
-
-        [name]: !isNaN(value) ? parseFloat(value) : value,
-      };
-    } else if (
-      name === "title" ||
-      name === "outboundFlight" ||
-      name === "returnFlight" ||
-      name === "description" ||
-      name === "initialDate" ||
-      name === "finalDate" ||
-      name === "service"
-    ) {
-      parsedValue = {
-
-        ...input,
-        [name]: value,
+        ...parsedValue,
+        [name]: isNaN(value) ? value : parseFloat(value),
       };
     }
   
-     
     // Establecer los errores en el estado de errores
-    const newErrors = validationCreateForm({
-      ...input,
-      [name]: parsedValue,
-    });
-    setErrors(newErrors)
+    // const newErrors = validationCreateForm(parsedValue);
+    // setErrors(newErrors);
+  
     // Actualizar el estado de input después de completar el análisis
     setInput(parsedValue);
   };
@@ -256,7 +238,7 @@ const Form = () => {
           finalDate: "",
           totalLimit: 0,
           standarPrice: 0,
-          promotionPrice: 0,
+          promotionPrice: "",
           service: "",
           duration: 0,
           originCity: 0, //salida
@@ -377,13 +359,13 @@ const Form = () => {
             ...input,
             image: imageUrl,
           });
-          const newErrors = validationCreateForm({
-            ...input,
-            image: imageUrl,
-          });
+          // const newErrors = validationCreateForm({
+          //   ...input,
+          //   image: imageUrl,
+          // });
 
           // Establecer los errores en el estado de errores
-          setErrors(newErrors);
+          // setErrors(newErrors);
         })
         .catch((error) => {
           console.error("Error uploading image:", error);
@@ -400,7 +382,7 @@ const Form = () => {
         <SidebarAdmin className="col-span-1" />
         <div className="flex justify-center col-span-3 mb-5 mt-5 w-full rounded-xl shadow-xl mr-10">
           <Tabs className="fontPoppins">
-            <TabList className="font-bold text-lg justify-center rounded-xl bg-verdeFooter  text-white">
+            <TabList className="font-bold text-lg justify-center rounded-xl bg-red-600  text-white">
               <Tab>Datos Generales</Tab>
               <Tab>Ubicación</Tab>
               <Tab>Datos de Vuelo</Tab>
@@ -431,9 +413,9 @@ const Form = () => {
                       className="w-3/4 px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                     />
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.title}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
@@ -453,9 +435,9 @@ const Form = () => {
                       className="w-3/4 px-3 py-2 placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm  text-gray-600"
                     />
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.image}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
@@ -477,9 +459,9 @@ const Form = () => {
                       className="w-3/4 h-3/4 px-3 py-2  placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                     />
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.description}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
@@ -508,9 +490,9 @@ const Form = () => {
                       className="w-3/4  px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                     />
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.initialDate}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
@@ -532,9 +514,9 @@ const Form = () => {
                       className="w-3/4 px-3 py-2  placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                     />
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.totalLimit}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="mb-5">
@@ -554,9 +536,9 @@ const Form = () => {
                       className="w-3/4 px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                     />
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.finalDate}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="mb-5">
@@ -564,7 +546,7 @@ const Form = () => {
                       htmlFor="duration"
                       className="block mb-2 text-sm font-bold text-gray-600"
                     >
-                      Duración:
+                    Duración:
                     </label>
                     <input
                       type="number"
@@ -577,9 +559,9 @@ const Form = () => {
                       className="w-3/4 px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                     />
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.duration}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
@@ -601,37 +583,12 @@ const Form = () => {
                       className="w-3/4 px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                     />
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.standarPrice}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
-                  <div>
-                    <label
-                      htmlFor="qualification"
-                      className="block mb-2 text-sm font-bold text-gray-600"
-                    >
-                      Calificacion del paquete
-                    </label>
-                    <input
-                      type="number"
-                      name="qualification"
-                      id="qualification"
-                      min="0"
-                      step="0.5"
-                      max="10"
-                      placeholder="Vuelo de regreso..."
-                      value={input.qualification}
-                      onChange={handleInputChange}
-                      className="w-3/4 px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
-                    />
-                    <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
-                        {errors.qualification}
-                      </p>
-                    </div>
-                  </div>
                   <div className="mb-5">
                     <label
                       htmlFor="promotionPrice"
@@ -651,7 +608,9 @@ const Form = () => {
                     />
                   </div>
                 </div>
-              </div>
+                </div>
+
+         
             </TabPanel>
 
             <TabPanel className="fontPoppins">
@@ -679,9 +638,9 @@ const Form = () => {
                       ))}
                     </select>
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.originCity}
-                      </p>
+                      </p> */}
                     </div>
                     <div>
 
@@ -727,9 +686,9 @@ const Form = () => {
                       ))}
                     </select>
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.idCountry}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
@@ -758,9 +717,9 @@ const Form = () => {
                       ))}
                     </select>
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.idContinent}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
@@ -793,9 +752,9 @@ const Form = () => {
                         })}
                     </select>
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.idCity}
-                      </p>
+                      </p> */}
                     </div>
 
                     <button
@@ -810,10 +769,8 @@ const Form = () => {
                       <FormNewCityDestiny
                         onHideForm={handleHideNewCityDestinyForm}
                         selectedCountryId={input.idCountry}
-
-                        filteredCities={filteredCities}
-                        setFilteredCities={setFilteredCities}
-
+                        
+                
                       />
                     )}
                   </div>
@@ -846,9 +803,9 @@ const Form = () => {
                       ))}
                     </select>
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.idAirline}
-                      </p>
+                      </p> */}
                     </div>
                     <div>
                       <button
@@ -879,9 +836,9 @@ const Form = () => {
                         className="w-3/4 px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                       />
                       <div>
-                        <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                        {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                           {errors.outboundFlight}
-                        </p>
+                        </p> */}
                       </div>
 
                       <label
@@ -900,9 +857,9 @@ const Form = () => {
                         className="w-3/4 px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                       />
                       <div>
-                        <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                        {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                           {errors.returnFlight}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                   </div>
@@ -935,9 +892,9 @@ const Form = () => {
                       ))}
                     </select>
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.hotel}
-                      </p>
+                      </p> */}
                     </div>
                     <div>
                       <button
@@ -975,9 +932,9 @@ const Form = () => {
                       className="w-3/4 px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 fontPoppins text-sm"
                     />
                     <div>
-                      <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
+                      {/* <p className="text-red-500 text-xs font-bold fontPoppins mt-2 mb-5">
                         {errors.service}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 

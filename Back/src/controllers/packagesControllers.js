@@ -94,7 +94,7 @@ const addPackages = async (objeto) => {
     finalDate,
     totalLimit,
     standarPrice,
-    promotionPrice,
+    promotionPrice: standarPrice*0.85,
     duration,
     originCity,
     idAirline,

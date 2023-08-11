@@ -12,7 +12,9 @@ import {
   SET_CLEAR_PRICE_RANGE_FILTER,
   SET_ORIGIN_CITY_FILTER,
   FETCH_ORIGIN_CITIES,
-  RESET
+  RESET,
+  SEARCH_PACKAGES_ADMIN,
+  FULL_PACKAGE
 } from "./packagesActions";
 
 
@@ -90,6 +92,15 @@ const packagesReducer = (state = initialState, action) => {
           packagesFiltered:[],
           packagesSearch:[],
           packagesList:[]
+        }
+
+        case FULL_PACKAGE:
+        return{
+          ...state,
+          PackagesAdminList:action.payload,
+          packagesList: action.payload,
+          allPackages:action.payload,
+          packagesSearch:action.payload
         }
 
 
@@ -312,6 +323,18 @@ const packagesReducer = (state = initialState, action) => {
         ranPriceFilter: [0.0, 10000.0]
       }
     };
+
+    case SEARCH_PACKAGES_ADMIN:
+      const searchTerm = action.payload.toLowerCase();
+      const searchResults = state.packagesList.filter((tour) =>
+        tour.title.toLowerCase().includes(searchTerm)
+      );
+
+      return {
+        ...state,
+        packagesSearch: searchResults,
+      };
+
    
     default:
       return state;
