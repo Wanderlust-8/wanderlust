@@ -5,14 +5,14 @@ export const GET_CONTINENT_BY_ID = "GET_CONTINENT_BY_ID";
 export const SEARCH_CONTINENTS = "SEARCH_CONTINENTS";
 
 // const URL = "https://wanderlust-drab.vercel.app";
-const URL = "https://localhost:3002";
+const URL = "http://localhost:3002";
 
 export const fetchContinents = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`${URL}/continents/`);
       const data = response.data;
-      console.log('continents en action', data)
+      console.log("continents en action", data);
       return dispatch({
         type: FETCH_CONTINENTS,
         payload: data,
@@ -26,9 +26,7 @@ export const fetchContinents = () => {
 export const getContinentById = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `${URL}/continents/${id}`
-      );
+      const response = await axios.get(`${URL}/continents/${id}`);
       const data = response.data;
       return dispatch({
         type: GET_CONTINENT_BY_ID,
@@ -43,9 +41,7 @@ export const getContinentById = (id) => {
 export const searchContinents = (word) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `${URL}/continents?title=${word}`
-      );
+      const response = await axios.get(`${URL}/continents?title=${word}`);
       const data = response.data;
       return dispatch({
         type: SEARCH_CONTINENTS,

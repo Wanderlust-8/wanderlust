@@ -4,10 +4,10 @@ export const FETCH_ACTIVITYS = "FETCH_ACTIVITYS";
 export const ADD_ACTIVITY = "ADD_ACTIVITY";
 export const GET_ACTIVITY_BY_ID = "GET_ACTIVITY_BY_ID";
 export const SEARCH_ACTIVITYS = "SEARCH_ACTIVITYS";
-export const ADD_ACTIVITYS = "ADD_ACTIVITYS"
+export const ADD_ACTIVITYS = "ADD_ACTIVITYS";
 
 // const URL = "https://wanderlust-drab.vercel.app";
-const URL = "https://localhost:3002";
+const URL = "http://localhost:3002";
 
 export const fetchActivitys = () => {
   return async (dispatch) => {
@@ -27,10 +27,7 @@ export const fetchActivitys = () => {
 export const addActivity = (newActivity) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(
-        `${URL}/activitys`,
-        newActivity
-      );
+      const response = await axios.post(`${URL}/activitys`, newActivity);
       const data = response.data;
       return dispatch({
         type: ADD_ACTIVITY,
@@ -59,7 +56,6 @@ export const addActivities = (newActivities) => {
     }
   };
 };
-
 
 export const getActivityById = (id) => {
   return async (dispatch) => {

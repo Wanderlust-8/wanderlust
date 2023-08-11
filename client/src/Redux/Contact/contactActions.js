@@ -5,7 +5,7 @@ export const SEND_EMAIL_SUCCESS = "SEND_EMAIL_SUCCESS";
 export const SEND_EMAIL_ERROR = "SEND_EMAIL_ERROR";
 
 // const URL = "https://wanderlust-drab.vercel.app";
-const URL = "https://localhost:3002";
+const URL = "http://localhost:3002";
 export const startSendEmail = (name, email, phone, message) => {
   return async (dispatch) => {
     try {

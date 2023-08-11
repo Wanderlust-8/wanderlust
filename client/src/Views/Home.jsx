@@ -36,6 +36,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchPackages());
+    console.log(packages);
     dispatch(fetchUsers());
     if (currentUser) {
       // const find = user1.find((us) => us.uid === currentUser.uid);
