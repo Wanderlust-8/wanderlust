@@ -19,7 +19,7 @@ export const PUT_PACKAGE = "PUT_PACKAGE";
 export const SEARCH_PACKAGES_ADMIN = "SEARCH_PACKAGES_ADMIN";
 export const FULL_PACKAGE = "FULL_PACKAGE";
 
-const URL = "https://wanderlust-drab.vercel.app";
+const URL = "https://wanderlust-7ihj.vercel.app";
 // const URL = "http://localhost:3002";
 
 export const fetchPackages = () => {
@@ -191,11 +191,10 @@ export const put_package = (idProduct, item) => {
     } catch (error) {
       console.log(error.message);
     }
-  }
-}
+  };
+};
 
 export const searchPackagesAdmin = (searchTerm) => ({
   type: SEARCH_PACKAGES_ADMIN,
   payload: searchTerm,
 });
-

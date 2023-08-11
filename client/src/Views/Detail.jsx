@@ -29,7 +29,7 @@ function Detail() {
   const idCart = useSelector((state) => state.carrito.idCart);
   const car = useSelector((state) => state.carrito.cart);
 
-  console.log('tour', tour)
+  console.log("tour", tour);
   // console.log("EL ID", idCart);
   // console.log("EL CART DE MIERDA ", car);
   // console.log('comments', comments)
@@ -100,16 +100,13 @@ function Detail() {
   async function guardarEnBDD(parametro) {
     // console.log("item desde actvity", parametro);
     if (idCart) {
-      await fetch(
-        `https://wanderlust-peach.vercel.app/shoppingCar/${idCart}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(parametro),
-        }
-      );
+      await fetch(`https://wanderlust-7ihj.vercel.app/shoppingCar/${idCart}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(parametro),
+      });
       //      console.log(response1);
     }
   }
@@ -130,7 +127,6 @@ function Detail() {
     }
   }
 
- 
   if (!tour.id) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -146,15 +142,17 @@ function Detail() {
       </div>
 
       <div className="w-full h-80 relative">
-        {!tour.image ? <h2 className="text-2xl fontPoppin font-bold text-verdeFooter inline-flex mt-20">Cargando...</h2>
-        :
-        <img
-          src={tour.image}
-          className="w-full h-full object-cover"
-          alt="tour"
-        />
-        
-      }
+        {!tour.image ? (
+          <h2 className="text-2xl fontPoppin font-bold text-verdeFooter inline-flex mt-20">
+            Cargando...
+          </h2>
+        ) : (
+          <img
+            src={tour.image}
+            className="w-full h-full object-cover"
+            alt="tour"
+          />
+        )}
 
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <h1 className="text-4xl text-white font-bold">{tour.title}</h1>
@@ -170,24 +168,27 @@ function Detail() {
           <Flights tour={tour} />
 
           <div className="text-right w-full flex flex-col justify-between bg-white mt-4 p-4 rounded-lg shadow-xl">
-            <h2 className="text-base">{tour.duration} días en {tour.City.name}</h2>
-            <h2 className="text-base">Salida el {tour.initialDate.split("/").reverse().join("/")}</h2>
+            <h2 className="text-base">
+              {tour.duration} días en {tour.City.name}
+            </h2>
+            <h2 className="text-base">
+              Salida el {tour.initialDate.split("/").reverse().join("/")}
+            </h2>
             {tour.CityOrigin ? (
               <h2 className="text-base">desde {tour.CityOrigin.name} </h2>
             ) : null}
-           
-            {Number(tour.qualification) !== 0 ?
-            <h2 className="text-base">
-              Calificación de otros viajeros: {tour.qualification}
-            </h2>
-            :  <h2 className="text-base">
-            Aún no tiene calificación.
-          </h2>
-          }
+
+            {Number(tour.qualification) !== 0 ? (
+              <h2 className="text-base">
+                Calificación de otros viajeros: {tour.qualification}
+              </h2>
+            ) : (
+              <h2 className="text-base">Aún no tiene calificación.</h2>
+            )}
             <h2 className="text-lg font-semibold mt-6 ">
               USD {tour.standarPrice} -{tipoPaquete}-
-              </h2>
-              <h2 className="text-xs">Incluye {tour.service}</h2>
+            </h2>
+            <h2 className="text-xs">Incluye {tour.service}</h2>
             <h2 className="text-base mb-8">
               Cupos disponibles: {tour.totalLimit}
             </h2>
