@@ -28,8 +28,8 @@ export const NEW_CART = "NEW_CART";
 //     }
 //   };
 // };
-const URL = "https://localhost:3002";
-// const URL = "https://wanderlust-drab.vercel.app";
+// const URL = "http://localhost:3002";
+const URL = "https://wanderlust-drab.vercel.app";
 export const fetchUsers = () => {
   return async (dispatch) => {
     try {
@@ -49,10 +49,7 @@ export const addUser = (newUser) => {
   return async (dispatch) => {
     try {
       //console.log("ESTO ES USER:", newUser);
-      const userResponse = await axios.post(
-        `${URL}/users`,
-        newUser
-      );
+      const userResponse = await axios.post(`${URL}/users`, newUser);
       const user = userResponse.data;
 
       dispatch({
@@ -102,9 +99,7 @@ export const getUserById = (id) => {
 export const searchUsers = (word) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `${URL}/users?title=${word}`
-      );
+      const response = await axios.get(`${URL}/users?title=${word}`);
       const data = response.data;
       return dispatch({
         type: SEARCH_USERS,
@@ -134,10 +129,7 @@ export const deleteUser = (id) => {
 export const editUser = (uid, user) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put(
-        `${URL}/users/${uid}`,
-        user
-      );
+      const response = await axios.put(`${URL}/users/${uid}`, user);
       const data = response.data;
       console.log("LO QUE SE GUARDA EN EL ESTADO", data.user);
       return dispatch({

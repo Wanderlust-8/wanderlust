@@ -1,40 +1,42 @@
 import React, { useEffect, useContext, useState } from "react";
 import NavBar from "../Components/NavBar";
 import SideBarAdmin from "../Components/SideBarAdmin";
-// import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { fetchUsers } from "../Redux/Users/usersActions";
 // import { authContext } from "../Context/authContext";
 
 function Admin() {
-  // const { currentUser } = useContext(authContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const user1 = useSelector((state) => state.users.usersList);
-  // const find = user1.find((us) => us.uid === currentUser.uid);
-  // const profileStorage = find;
-  // localStorage.setItem("profileStorage", JSON.stringify(profileStorage));
-  // const getProfileStorage = localStorage.getItem("profileStorage");
+  const user1 = useSelector((state) => state.users.usersList);
+
   const [habilitado, setHabilitado] = useState(true);
+  let userEnStorage = JSON.parse(localStorage.getItem("user"));
+  console.log("ESTO ES USER EN STORAGE LUEGO DE CERRAR SESION:", userEnStorage);
+  useEffect(() => {
+    dispatch(fetchUsers());
+    if (user1) {
+      if (!userEnStorage) {
+        console.log("que onda");
 
-  // useEffect(() => {
-  //   // const getProfileStorage = localStorage.getItem("profileStorage");
-  //   const getProfileStorage = JSON.parse(
-  //     localStorage.getItem("profileStorage")
-  //   );
-
-  //   console.log(getProfileStorage);
-  //   if (!getProfileStorage || getProfileStorage.profile === 1) {
-  //     navigate("/home");
-  //     window.alert("No tiene permiso");
-  //   } else {
-  //     navigate("/admin");
-  //     setHabilitado(true);
-  //     console.log("usuario no bloqueado");
-  //   }
-  // }, []);
+        navigate("/home");
+        setTimeout(function () {
+          window.alert("Acceso bloqueado :)");
+        }, 1000);
+      } else if (userEnStorage.profile === 1) {
+        console.log("entra en el segundod e admin");
+        navigate("/home");
+        setTimeout(function () {
+          window.alert("Acceso bloqueado :)");
+        }, 1000);
+      }
+    } else console.log("BIENVENIDO");
+  }, []);
 
   return (
     <>
-      {habilitado ? (
+      {userEnStorage && userEnStorage.profile === 2 ? (
         <>
           <div className="relative bg-red-600 ">
             <NavBar />

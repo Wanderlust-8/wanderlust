@@ -5,8 +5,8 @@ export const ADD_COUNTRY = "ADD_COUNTRY";
 export const GET_COUNTRY_BY_ID = "GET_COUNTRY_BY_ID";
 export const SEARCH_COUNTRIES = "SEARCH_COUNTRIES";
 
-// const URL = "https://wanderlust-drab.vercel.app";
-const URL = "https://localhost:3002";
+const URL = "https://wanderlust-drab.vercel.app";
+// const URL = "http://localhost:3002";
 
 export const fetchCountries = () => {
   return async (dispatch) => {
@@ -26,10 +26,7 @@ export const fetchCountries = () => {
 export const addCountries = (newCountry) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(
-        `${URL}/countries`,
-        newCountry
-      );
+      const response = await axios.post(`${URL}/countries`, newCountry);
       const data = response.data;
       return dispatch({
         type: ADD_COUNTRY,
@@ -59,9 +56,7 @@ export const getCountryById = (id) => {
 export const searchCountries = (word) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `${URL}/countries?title=${word}`
-      );
+      const response = await axios.get(`${URL}/countries?title=${word}`);
       const data = response.data;
       return dispatch({
         type: SEARCH_COUNTRIES,

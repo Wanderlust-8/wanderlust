@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addUser } from "../Redux/Users/usersActions";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, fetchUsers } from "../Redux/Users/usersActions";
 import { FcGoogle } from "react-icons/fc";
 import { GrGithub } from "react-icons/gr";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
@@ -28,6 +28,7 @@ const RegisterPage = () => {
   const [isValid, setIsValid] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -42,12 +43,14 @@ const RegisterPage = () => {
   const { name, lastName, email, password, profile } = user;
 
   useEffect(() => {
+    dispatch(fetchUsers());
     if (error) {
       setErrorMsg(error);
     }
     if (currentUser) {
       navigate("/home"); // redirige a la ruta /home
     }
+
     return () => {
       setErrorMsg("");
       resetError();
@@ -67,6 +70,7 @@ const RegisterPage = () => {
 
   const validateInput = () => {
     if (name !== "" && lastName !== "" && email !== "" && password !== "") {
+      console.log("entra aca");
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -99,10 +103,9 @@ const RegisterPage = () => {
           displayName: `${name} ${lastName}`,
         });
         dispatch(addUser(updatedUser));
-
         toast.success(`Bienvenido ${name}!`);
         login(email, password);
-        navigate("/home");
+        navigate("/");
       }
     } catch (error) {
       setErrorMsg(error.message);
@@ -157,7 +160,7 @@ const RegisterPage = () => {
         );
 
         toast.success(`Bienvenido ${tokenResponse.firstName}!`);
-        navigate("/home");
+        navigate("/");
       }
     } catch (error) {
       setErrorMsg(error.message);

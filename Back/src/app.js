@@ -5,10 +5,9 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 
-
-require('./database.js');
+require("./database.js");
 const server = express();
-server.name = 'API';
+server.name = "API";
 
 //midleweares
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
@@ -18,7 +17,7 @@ server.use(morgan("dev"));
 server.use(cors());
 
 server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "https://wanderlust-8.vercel.app"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
@@ -31,6 +30,5 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
 server.use("/", routes);
-
 
 module.exports = server;

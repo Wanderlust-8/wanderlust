@@ -44,7 +44,7 @@ router.get("/pay-order", async (req, res) => {
     const { token } = req.query;
     await captureOrder(token, uidUser);
     //cambiar la ruta a la vista "gracias por tu compra"
-    res.status(200).redirect("https://localhost:3000/paymentcomplete");
+    res.status(200).redirect("https://wanderlust-8.vercel.app/paymentcomplete");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -63,7 +63,7 @@ router.get("/payment-details", async (req, res) => {
 
 router.get("/cancel-order", async (req, res) => {
   try {
-    res.redirect("https://localhost:3000/shoppingCart");
+    res.redirect("https://wanderlust-8.vercel.app/shoppingCart");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

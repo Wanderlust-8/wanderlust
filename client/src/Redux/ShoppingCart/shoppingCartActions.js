@@ -7,8 +7,8 @@ export const CLEAN_CART = "CLEAN_CART";
 export const CHECKUSER_SHOPPING = "CHECKUSER_SHOPPING";
 export const SAVE_ITEM_DB = "SAVE_ITEM_DB";
 export const SET_ITEM = "SET_ITEM";
-const URL = "https://localhost:3002";
-// const URL = "https://wanderlust-drab.vercel.app";
+// const URL = "http://localhost:3002";
+const URL = "https://wanderlust-drab.vercel.app";
 
 //agrega el item al estado global
 export const add_to_cart = (item) => {
@@ -28,19 +28,17 @@ export const set_item = (idCart, item) => {
         payload: item,
       });
     } catch (error) {
-      console.log('error', error.message);
+      console.log("error", error.message);
     }
   };
 };
 
 //trae la info de X carrito
 export const userShopping = (uid) => {
-  // console.log("uid en ACTION:", uid);
+  console.log("uid en ACTION:", uid);
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `${URL}/shoppingCar/user/${uid}`
-      );
+      const response = await axios.get(`${URL}/shoppingCar/user/${uid}`);
       const data = response.data;
       // console.log("esto es data de usershopping:", data);
       return dispatch({
@@ -61,16 +59,14 @@ export const remove_one_from_cart = (item) => {
 
   return async (dispatch) => {
     try {
-      const response = await axios.delete(
-        `${URL}/shoppingCar/item/${id}`
-      );
+      const response = await axios.delete(`${URL}/shoppingCar/item/${id}`);
       // console.log("LA RESP DE LA ELIMINACION", response.data);
       return dispatch({
         type: REMOVE_ONE_FROM_CART,
         payload: response.data.ItemsShoppingCars,
       });
     } catch (error) {
-      window.alert('No se pudo eliminar el item.')
+      window.alert("No se pudo eliminar el item.");
       // console.log(error);
     }
   };
@@ -86,9 +82,8 @@ export const clean_cart = (idCart) => {
         type: CLEAN_CART,
       });
     } catch (error) {
-      window.alert('No se pudo vaciar el carrito.')
+      window.alert("No se pudo vaciar el carrito.");
       console.log(error);
     }
   };
 };
-

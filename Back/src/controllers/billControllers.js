@@ -1,5 +1,6 @@
 const {Bill, ItemsBill, ShoppingCar, ItemsShoppingCar, Package, Activity, User} = require("../database");
 const { Association } = require("sequelize");
+const nodemailer = require("nodemailer");
 
 //esta funcion agrega una nueva factura
 const addBill = async(datos) => {
@@ -61,17 +62,77 @@ const addBill = async(datos) => {
     return getBillById(nBill.id);
 };
 
+const transporter = nodemailer.createTransport({
+   service: "Gmail", // Puedes usar otros servicios o configurar SMTP directamente
+   auth: {
+     user: "wanderlusthenry8@gmail.com",
+     pass: "zdtwknubrgsovske",
+   },
+ });
+
 
 //esta funcion devuelve una factura por su ID
 const getBillById = async(id) => {
    if(!id) return {message: "Id no definido"};
+   try {
    const idBill = Number(id);
    const fact = await Bill.findByPk(idBill, {
       include: [
          {model: ItemsBill},
          {association: "User", attributes: ['name', 'lastName', 'email', 'address', 'phoneNumber', 'dni']},
    ]});
+   const items = fact.ItemsBills.map(item => ({
+      totalPrice: item.dataValues.totalPrice,
+      typeProduct: item.dataValues.typeProduct,
+      title: item.dataValues.title
+   }));
+
+   const userEmail = fact.dataValues.User.dataValues.email;
+
+   const itemsDetails = items.map(item => `Producto: ${item.title}, Precio total: ${item.totalPrice}`);
+   const itemsDetailsText = itemsDetails.join('\n');
+
+   const transactionNumber = fact.dataValues.idTransaction;
+   const userName = `${fact.dataValues.User.dataValues.name} ${fact.dataValues.User.dataValues.lastName}`;
+   const purchaseDate = fact.dataValues.date.toISOString().split('T')[0];
+
+   const emailTemplate = `
+         <!DOCTYPE html>
+         <html>
+         <head>
+            <title>Resumen de tu compra</title>
+         </head>
+         <body style="font-family: Arial, sans-serif; background-color: #f9f9f9;">
+            <div style="background-color: #fff; max-width: 600px; margin: 0 auto; padding: 20px;">
+               <h1 style="font-size: 24px; color: #525252;">Gracias por tu compra, ${userName}!</h1>
+               <p style="font-size: 14px; color: #525252;">Has realizado tu compra con el número de transacción ${transactionNumber} el ${purchaseDate}. A continuación, encontrarás los detalles de tu compra:</p>
+               <ul style="font-size: 14px; color: #525252;">
+                  ${items.map(item => `<li>Producto: ${item.title}, Precio total: $${item.totalPrice}</li>`).join('')}
+               </ul>
+               <p style="font-size: 14px; color: #525252;">Esperamos que disfrutes de tu compra.</p>
+            </div>
+         </body>
+         </html>
+      `;
+   
+
+   
+      const resumen = {
+        from: "wanderlusthenry8@gmail.com",
+        to: userEmail,
+        subject: "Resumen de tu compra",
+        html: emailTemplate,
+      };
+  
+      await transporter.sendMail(resumen);
+
+      // console.log(fact);
    return fact;
+    } catch (error) {
+      console.error("Error sending email:", error);
+      throw new Error("Error sending email");
+    }
+   
 };
 
 

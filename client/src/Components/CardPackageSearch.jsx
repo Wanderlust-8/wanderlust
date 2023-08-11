@@ -33,7 +33,7 @@ function Card({
   return (
     <div
       onClick={navigateHandler}
-      className="flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-2xl p-3 max-w-4xl mx-auto border border-white bg-white cursor-pointer hover:shadow-2xl transition duration-200 relative"
+      className="flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-2xl p-3 w-4/5 mx-auto border border-white bg-white cursor-pointer hover:shadow-2xl transition duration-200 relative" // <-- Ajusta esta anchura a tu preferencia
     >
       <div className="w-full md:w-2/5 grid place-items-center">
         <img
