@@ -13,6 +13,7 @@ import { authContext } from "../Context/authContext";
 import { userShopping } from "../Redux/ShoppingCart/shoppingCartActions";
 import { fetchUsers } from "../Redux/Users/usersActions";
 import { adminTrue } from "../Redux/UserAdmin/userAdminAction";
+
 function Home() {
   const dispatch = useDispatch();
   const packages = useSelector((state) => state.packages.packagesList);
@@ -20,6 +21,7 @@ function Home() {
   const user1 = useSelector((state) => state.users.usersList);
   const user2 = useSelector((state) => state.users.usersFiltered);
 
+  console.log('elidcart', idCart)
   const { currentUser } = useContext(authContext);
   console.log(currentUser);
 
@@ -57,8 +59,7 @@ function Home() {
       localStorage.getItem("carrito").length > 0
     ) {
       const JSstorage = JSON.parse(localStorage.getItem("carrito"));
-      console.log("ellocalstorageenhome", localStorage);
-
+     
       JSstorage.forEach((el) => {
         // console.log("CADA ELEMENTO", el);
         dispatch(set_item(idCart, el));

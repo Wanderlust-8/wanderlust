@@ -7,7 +7,7 @@ export const CLEAN_CART = "CLEAN_CART";
 export const CHECKUSER_SHOPPING = "CHECKUSER_SHOPPING";
 export const SAVE_ITEM_DB = "SAVE_ITEM_DB";
 export const SET_ITEM = "SET_ITEM";
-const URL = "https://localhost:3002";
+const URL = "http://localhost:3002";
 // const URL = "https://wanderlust-drab.vercel.app";
 
 //agrega el item al estado global
@@ -35,7 +35,7 @@ export const set_item = (idCart, item) => {
 
 //trae la info de X carrito
 export const userShopping = (uid) => {
-  // console.log("uid en ACTION:", uid);
+  console.log("uid en ACTION:", uid);
   return async (dispatch) => {
     try {
       const response = await axios.get(

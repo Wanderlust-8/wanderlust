@@ -18,11 +18,11 @@ function PaymentComplete() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.carrito.status);
   const idCart = useSelector((state) => state.carrito.idCart);
-  // console.log("idcart", idCart);
-  const cart = useSelector((state) => state.carrito.cart);
+  console.log("idcart", idCart);
+  // const cart = useSelector((state) => state.carrito.cart);
   // console.log("el cart", cart);
   const bill = useSelector((state) => state.checkout.bill);
-  const tours = useSelector((state) => state.packages.packagesList);
+  // const tours = useSelector((state) => state.packages.packagesList);
   // console.log("tours", tours);
 
   const [videoEnded, setVideoEnded] = useState(false);
@@ -41,73 +41,6 @@ function PaymentComplete() {
     idCar: idCart,
   };
 
-  //filtrar solo los paquetes del carrito
-  // const packageOnly = cart && cart.filter((el) => el.typeProduct === 1);
-  // //sacar el id del paquete
-  // const idPackage = packageOnly && packageOnly.map((el) => el.idProduct);
-  // // console.log("id pack", idPackage);
-
-  // //filtrar aquellos paquetes que tengan el id igual a los idPackage, por si compra paquetes distintos
-  // const filteredTours = tours.filter((el) => idPackage.includes(el.id));
-  // // console.log("los tours que matchean", filteredTours);
-  
-
-  // //generar los newtotallimit para cada paquete comprado
-
-  // const toursmapeados = filteredTours.map(el => {
-  //   return {
-  //     ...el,
-  //     totalLimit: Number(el.totalLimit) - 
-
-  // }}) 
-
-
-
-  // const dispatchNewTotalLimitPackage = async (cart) => {
-  //   console.log('cart en dispatch', cart)
-  //   const updatePromises = filteredTours.forEach(async (tour) => {
-  //     const itemCart = cart && cart.find(el => el.idProduct === tour.idProduct);
-  //     console.log('itemcart', itemCart)
-  //     if (itemCart) {
-  //       const amountBought = itemCart.amount;
-  //       const limitNumber = Number(tour.totalLimit);
-  //       const newTotalLimit = (limitNumber - amountBought).toString();
-  
-  //       const updatedItem = {
-  //         ...tour,
-  //         totalLimit: newTotalLimit
-  //       };
-  
-  //       await dispatch(put_package(tour.idProduct, updatedItem));
-  //     }
-  //   });
-  
-  //   await Promise.all(updatePromises);
-  // };
-  
- 
-  
-  // const dispatchNewTotalLimitPackage = (packageOnly) => {
-  //   filteredTours.forEach((tour) => {
-  //     const itemCart= packageOnly.find(el => el.idProduct === tour.idProduct)
-
-  //       console.log('items del newtotallimitpackage', itemCart)
-  //     const amountBought= itemCart.amount
-  //     const limitNumber = Number(tour.totalLimit)
-  //     const newtotalLimit = (limitNumber - amountBought).toString()
-  //     console.log('newtotallimit', newtotalLimit)
-
-  //     const item = {
-  //       ...tour,
-  //       totalLimit: newtotalLimit
-  //     }
-
-  //     console.log("newObj", item, "idProduct", tour.idProduct);
-
-  //     //despachar cada uno
-  //     dispatch(put_package(tour.idProduct, item));
-  //   });
-  // };
 
 
 
@@ -117,9 +50,7 @@ function PaymentComplete() {
         setAnimationEnded(true);
       }, 700);
     }
-    // dispatch(fetchCities());
-    // dispatch(fetchContinents());
-    // dispatch(fetchCountries());
+  
     dispatch(fetchPackages());
   }, [videoEnded, dispatch]);
 
@@ -137,11 +68,7 @@ function PaymentComplete() {
     }    
   }, [userShoppingCompleted, idCart, state, dispatch]);
   
-  // useEffect(() => {
-  //   if (billCreated && packageOnly.length > 0){
-  //     dispatchNewTotalLimitPackage(packageOnly)
-  //   }
-  // }, [billCreated])
+ 
 
   return (
     <>
