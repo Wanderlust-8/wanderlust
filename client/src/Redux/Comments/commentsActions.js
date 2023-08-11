@@ -6,7 +6,7 @@ export const GET_COMENT_BY_ID = "GET_COMENT_BY_ID";
 export const SEARCH_COMENTS = "SEARCH_COMENTS";
 export const GET_COMENT_BY_PACKAGE = "GET_COMENT_BY_PACKAGE";
 
-const URL = "https://wanderlust-drab.vercel.app";
+const URL = "https://wanderlust-peach.vercel.app";
 // const URL = "http://localhost:3002";
 
 //obtiene todos los coments

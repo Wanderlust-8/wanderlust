@@ -29,7 +29,7 @@ export const NEW_CART = "NEW_CART";
 //   };
 // };
 // const URL = "http://localhost:3002";
-const URL = "https://wanderlust-drab.vercel.app";
+const URL = "https://wanderlust-peach.vercel.app";
 export const fetchUsers = () => {
   return async (dispatch) => {
     try {

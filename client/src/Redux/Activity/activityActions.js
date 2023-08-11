@@ -6,7 +6,7 @@ export const GET_ACTIVITY_BY_ID = "GET_ACTIVITY_BY_ID";
 export const SEARCH_ACTIVITYS = "SEARCH_ACTIVITYS";
 export const ADD_ACTIVITYS = "ADD_ACTIVITYS";
 
-const URL = "https://wanderlust-drab.vercel.app";
+const URL = "https://wanderlust-peach.vercel.app";
 // const URL = "http://localhost:3002";
 
 export const fetchActivitys = () => {

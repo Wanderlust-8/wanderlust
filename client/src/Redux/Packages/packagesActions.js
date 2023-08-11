@@ -85,7 +85,7 @@ export const fetchOriginCities = () => {
 export const fetchallPackages = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3002/packages/all`);
+      const response = await axios.get(`${URL}/packages/all`);
       const data = response.data;
       return dispatch({
         type: FULL_PACKAGE,
