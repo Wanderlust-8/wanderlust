@@ -100,7 +100,7 @@ function Detail() {
   async function guardarEnBDD(parametro) {
     // console.log("item desde actvity", parametro);
     if (idCart) {
-      const response1 = await fetch(
+      await fetch(
         `http://localhost:3002/shoppingCar/${idCart}`,
         {
           method: "PUT",

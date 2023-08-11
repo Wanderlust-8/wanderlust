@@ -111,7 +111,7 @@ function MyItinerary() {
         </div>
 
         <div id="contenedor de itinerario">
-          <div className=" flex justify-center items-center">
+          <div className=" flex">
             <div className="w-[700px] h-auto rounded m-5 bg-gray-300 flex flex-col justify-around items-start p-4">
               <span className="ml-1 font-bold mb-2">Detalles del vuelo:</span>
               <span className="ml-5 mb-4">
@@ -130,7 +130,7 @@ function MyItinerary() {
             </div>
           </div>
 
-          <div className=" flex justify-center items-center">
+          <div className=" flex">
             <div className="w-[700px] h-auto rounded m-5 bg-gray-300 flex flex-col justify-around items-start p-4">
               <span className="ml-1 font-bold mb-2">
                 Detalles del Hospedaje:
@@ -144,7 +144,7 @@ function MyItinerary() {
             </div>
           </div>
 
-          <div className=" flex justify-center items-center">
+          <div className=" flex">
             <div className="w-[700px] h-auto rounded m-5 bg-gray-300 flex flex-col justify-around items-start p-4">
               <span className="ml-1 font-bold mb-2">Actividades incluídas:</span>
               {paquete &&
@@ -163,7 +163,7 @@ function MyItinerary() {
             </div>
           </div>
 
-          <div className=" flex justify-center items-center">
+          <div className=" flex">
             <div className="w-[700px] h-auto rounded m-5 bg-gray-300 flex flex-col justify-around items-start p-4">
               <span className="ml-1 font-bold mb-2">
                 Actividades que compraste:
@@ -178,12 +178,12 @@ function MyItinerary() {
           </div>
 
          <div className="mb-6 mt-8">
-          <span className="font-semibold mt-8 p-2 w-[700px] h-auto text-xl"> Te sugerímos el siguiente itinerario para que organíces tu estadía:</span>
+          <span className="font-semibold mt-8 p-2 w-[700px] h-auto tetx-left text-xl"> Te sugerímos el siguiente itinerario para que organíces tu estadía:</span>
 
          </div>
 
 
-          <div className="flex justify-center items-center">
+          <div className="flex">
   <div className="grid grid-cols-1 gap-2 w-[700px] md:w-2/3 lg:w-1/2 mb-10">
     {itineraryArray &&
       itineraryArray.map((el, index) => (
