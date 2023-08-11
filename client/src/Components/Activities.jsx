@@ -31,14 +31,11 @@ function Activities({ activity }) {
   };
 
   const guardarEnBDD = async (item) => {
-     await fetch(
-      `https://wanderlust-peach.vercel.app/shoppingCar/${idCart}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(item),
-      }
-    );
+    await fetch(`https://wanderlust-7ihj.vercel.app/${idCart}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(item),
+    });
   };
 
   //agregar items al localStorage

@@ -2,7 +2,7 @@ import axios from "axios";
 export const FETCH_BILLS_REQUEST = "FETCH_BILLS_REQUEST";
 export const FILTER_SALES_BY_PRODUCTS = "FILTER_SALES_BY_PRODUCTS";
 
-const URL = "https://wanderlust-peach.vercel.app";
+const URL = "https://wanderlust-7ihj.vercel.app";
 // const URL = "http://localhost:3002";
 
 // Acción para obtener las facturas desde la base de datos

@@ -58,8 +58,8 @@ export default function Checkout() {
       brand_name: "wanderlust.com",
       landing_page: "LOGIN",
       user_action: "PAY_NOW",
-      return_url: "https://wanderlust-peach.vercel.app/payment/pay-order",
-      cancel_url: "https://wanderlust-peach.vercel.app/payment/cancel-order",
+      return_url: "https://wanderlust-7ihj.vercel.app/payment/pay-order",
+      cancel_url: "https://wanderlust-7ihj.vercel.app/payment/cancel-order",
       current_user: currentUser.uid, //ACÁ HAY QUE TRAER EL UUID DEL CURRENT USER.
     },
   };
@@ -92,7 +92,8 @@ export default function Checkout() {
                   <div>
                     <p className="font-bold">Atención</p>
                     <p className="text-sm">
-                      Momentáneamente, el único método de pago en funcionamiento es PayPal.
+                      Momentáneamente, el único método de pago en funcionamiento
+                      es PayPal.
                     </p>
                   </div>
                 </div>

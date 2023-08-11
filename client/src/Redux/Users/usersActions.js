@@ -29,13 +29,13 @@ export const NEW_CART = "NEW_CART";
 //   };
 // };
 // const URL = "http://localhost:3002";
-const URL = "https://wanderlust-peach.vercel.app";
+const URL = "https://wanderlust-7ihj.vercel.app";
 export const fetchUsers = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`${URL}/users`);
       const data = response.data;
-      console.log("Response user", response.data)
+      console.log("Response user", response.data);
       return dispatch({
         type: FETCH_USERS,
         payload: data,
