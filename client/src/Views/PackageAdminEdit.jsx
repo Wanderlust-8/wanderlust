@@ -1,27 +1,26 @@
 import React from "react";
 import NavBar from "../Components/NavBar";
 import SideBarAdmin from "../Components/SideBarAdmin";
-import { useParams } from "react-router-dom";
+import DetailAdmin from "../Components/DetailEditionAdmin"
+
 // ...
 
 export default function PackageEdit() {
-  const { id } = useParams(); // Recuperar el ID del paquete de la ruta
-  // ...
-
-  // Usa el ID para obtener los detalles del paquete y mostrarlos en el formulario de edición
 
   return (
     <>
-    <div className="relative bg-verdeFooter">
-        <NavBar />
+    <div className="bg-red-600">
+        <NavBar className="mt-10"/>
       </div>
-      <div className="flex max-h-screen overflow-auto">
-        <SideBarAdmin />
-        
-        
-      </div></>
-    // ...
-    // Formulario de edición/modificación del paquete
-    // ...
+      <div className=" grid grid-cols-2 max-h-screen overflow-auto justify-center mb-10">
+        <div className="flex  overflow-auto">
+        <SideBarAdmin className="col-span-1" />
+        </div>
+        <div >
+        <DetailAdmin className="col-span-1" />
+        </div>
+      </div>
+      </>
+   
   )
 }
