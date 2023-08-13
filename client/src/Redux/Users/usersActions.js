@@ -28,8 +28,8 @@ export const NEW_CART = "NEW_CART";
 //     }
 //   };
 // };
-// const URL = "http://localhost:3002";
-const URL = "https://wanderlust-7ihj.vercel.app";
+const URL = "http://localhost:3002";
+// const URL = "https://wanderlust-7ihj.vercel.app";
 export const fetchUsers = () => {
   return async (dispatch) => {
     try {
@@ -46,11 +46,15 @@ export const fetchUsers = () => {
   };
 };
 
+// la del github de pol
 export const addUser = (newUser) => {
   return async (dispatch) => {
     try {
       //console.log("ESTO ES USER:", newUser);
-      const userResponse = await axios.post(`${URL}/users`, newUser);
+      const userResponse = await axios.post(
+        "http://localhost:3002/users",
+        newUser
+      );
       const user = userResponse.data;
 
       dispatch({
@@ -58,7 +62,7 @@ export const addUser = (newUser) => {
         payload: user,
       });
       const cartResponse = await axios.post(
-        `${URL}/shoppingCar/users/${user.uid}`
+        `http://localhost:3002/shoppingCar/user/${user.uid}`
       );
       dispatch(userShopping(user.uid));
       //   const response = await axios.get(
@@ -81,6 +85,49 @@ export const addUser = (newUser) => {
     }
   };
 };
+
+
+
+
+
+
+
+//La que ya estaba 
+// export const addUser = (newUser) => {
+//   return async (dispatch) => {
+//     try {
+//       //console.log("ESTO ES USER:", newUser);
+//       const userResponse = await axios.post(`${URL}/users`, newUser);
+//       const user = userResponse.data;
+
+//       dispatch({
+//         type: ADD_USER,
+//         payload: user,
+//       });
+//       const cartResponse = await axios.post(
+//         `${URL}/shoppingCar/users/${user.uid}`
+//       );
+//       dispatch(userShopping(user.uid));
+//       //   const response = await axios.get(
+//       //   `http://localhost:3002/shoppingCar/user/${user.id}`
+//       // );   const data = response.data;
+//       // console.log("esto es data de action:", data);
+//       // dispatch({
+//       //   type:CHECKUSER_SHOPPING,
+//       //   payload:
+
+//       // console.log("CARTTTT:", cart);
+//       // dispatch({
+//       //   type: NEW_CART,
+//       //   payload: cart,
+//       // });
+//       // console.log("CARTTTTT:", cart);
+//       return user;
+//     } catch (error) {
+//       console.log("EL ERROR::: ", error);
+//     }
+//   };
+// };
 
 export const getUserById = (id) => {
   return async (dispatch) => {

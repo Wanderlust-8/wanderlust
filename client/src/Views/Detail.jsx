@@ -100,7 +100,7 @@ function Detail() {
   async function guardarEnBDD(parametro) {
     // console.log("item desde actvity", parametro);
     if (idCart) {
-      await fetch(`https://wanderlust-7ihj.vercel.app/shoppingCar/${idCart}`, {
+      await fetch(`http://localhost:3002/shoppingCar/${idCart}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

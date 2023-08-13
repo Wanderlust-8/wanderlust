@@ -12,6 +12,7 @@ const router = Router();
 // Crear un nuevo usuario
 router.post("/", async (req, res) => {
   const datos = req.body;
+  console.log(datos)
   try {
     const result = await createUser(datos);
     res.status(200).json(result);

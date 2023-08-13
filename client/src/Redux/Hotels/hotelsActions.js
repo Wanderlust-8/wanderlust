@@ -5,8 +5,8 @@ export const ADD_HOTEL = "ADD_HOTEL";
 export const GET_HOTEL_BY_ID = "GET_HOTEL_BY_ID";
 export const SEARCH_HOTELS = "SEARCH_HOTELS";
 
-const URL = "https://wanderlust-7ihj.vercel.app";
-// const URL = "http://localhost:3002";
+// const URL = "https://wanderlust-7ihj.vercel.app";
+const URL = "http://localhost:3002";
 
 export const fetchHotels = () => {
   return async (dispatch) => {

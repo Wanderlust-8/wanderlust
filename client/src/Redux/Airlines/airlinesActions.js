@@ -4,8 +4,8 @@ export const FETCH_AIRLINES = "FETCH_AIRLINES";
 export const ADD_AIRLINE = "ADD_AIRLINE";
 export const GET_AIRLINE_BY_ID = "GET_AIRLINE_BY_ID";
 export const SEARCH_AIRLINES = "SEARCH_AIRLINES";
-const URL = "https://wanderlust-7ihj.vercel.app";
-// const URL = "http://localhost:3002";
+// const URL = "https://wanderlust-7ihj.vercel.app";
+const URL = "http://localhost:3002";
 
 export const fetchAirlines = () => {
   return async (dispatch) => {
