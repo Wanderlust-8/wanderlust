@@ -3,7 +3,7 @@ require("dotenv").config();
 const { Itinerary, User, Package } = require("../database");
 
 //const apiKey = process.env;
-const apiKey = "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";
+const apiKey = "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";
 // const apiKey= "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";
 const generateItinerary = async (datos) => {
   const { continent, country, city, duration, idPackage } = datos;

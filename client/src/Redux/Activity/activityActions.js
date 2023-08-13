@@ -12,7 +12,7 @@ const URL = "http://localhost:3002";
 export const fetchActivitys = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${URL}/activitys`);
+      const response = await axios.get(`${URL}/activity`);
       const data = response.data;
       return dispatch({
         type: FETCH_ACTIVITYS,
@@ -27,7 +27,7 @@ export const fetchActivitys = () => {
 export const addActivity = (newActivity) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`${URL}/activitys`, newActivity);
+      const response = await axios.post(`${URL}/activity`, newActivity);
       const data = response.data;
       return dispatch({
         type: ADD_ACTIVITY,
@@ -60,7 +60,7 @@ export const addActivities = (newActivities) => {
 export const getActivityById = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${URL}/activitys/${id}`);
+      const response = await axios.get(`${URL}/activity/${id}`);
       const data = response.data;
       return dispatch({
         type: GET_ACTIVITY_BY_ID,
@@ -72,19 +72,4 @@ export const getActivityById = (id) => {
   };
 };
 
-export const searchActivitys = (word) => {
-  return async (dispatch) => {
-    try {
-      const response = await axios.get(
-        `${URL}/activitys?title=${encodeURIComponent(word)}`
-      );
-      const data = response.data;
-      return dispatch({
-        type: SEARCH_ACTIVITYS,
-        payload: data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+

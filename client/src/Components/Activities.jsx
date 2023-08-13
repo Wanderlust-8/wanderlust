@@ -31,12 +31,16 @@ function Activities({ activity }) {
   };
 
   const guardarEnBDD = async (item) => {
-    await fetch(`http://localhost:3002/${idCart}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item),
-    });
-  };
+    await fetch(
+     `http://localhost:3002/shoppingCar/${idCart}`,
+     {
+       method: "PUT",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify(item),
+     }
+   );
+ };
+
 
   //agregar items al localStorage
   function addNewItem(item) {
