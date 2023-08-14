@@ -28,8 +28,8 @@ export const NEW_CART = "NEW_CART";
 //     }
 //   };
 // };
-const URL = "http://localhost:3002";
-// const URL = "https://wanderlust-7ihj.vercel.app";
+// const URL = "http://localhost:3002";
+const URL = "https://backwanderlust-production.up.railway.app";
 export const fetchUsers = () => {
   return async (dispatch) => {
     try {
@@ -52,7 +52,7 @@ export const addUser = (newUser) => {
     try {
       //console.log("ESTO ES USER:", newUser);
       const userResponse = await axios.post(
-        "http://localhost:3002/users",
+        "https://backwanderlust-production.up.railway.app/users",
         newUser
       );
       const user = userResponse.data;
@@ -62,7 +62,7 @@ export const addUser = (newUser) => {
         payload: user,
       });
       const cartResponse = await axios.post(
-        `http://localhost:3002/shoppingCar/user/${user.uid}`
+        `https://backwanderlust-production.up.railway.app/shoppingCar/user/${user.uid}`
       );
       dispatch(userShopping(user.uid));
       //   const response = await axios.get(

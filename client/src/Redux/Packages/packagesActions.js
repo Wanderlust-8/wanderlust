@@ -19,8 +19,8 @@ export const PUT_PACKAGE = "PUT_PACKAGE";
 export const SEARCH_PACKAGES_ADMIN = "SEARCH_PACKAGES_ADMIN";
 export const FULL_PACKAGE = "FULL_PACKAGE";
 
-// const URL = "https://wanderlust-7ihj.vercel.app";
-const URL = "http://localhost:3002";
+const URL = "https://backwanderlust-production.up.railway.app";
+// const URL = "http://localhost:3002";
 
 export const fetchPackages = () => {
   return async (dispatch) => {

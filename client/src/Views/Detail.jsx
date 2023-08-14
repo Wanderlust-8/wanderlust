@@ -100,7 +100,7 @@ function Detail() {
   async function guardarEnBDD(parametro) {
     // console.log("item desde actvity", parametro);
     if (idCart) {
-      await fetch(`http://localhost:3002/shoppingCar/${idCart}`, {
+      await fetch(`https://backwanderlust-production.up.railway.app/shoppingCar/${idCart}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
