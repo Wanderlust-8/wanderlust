@@ -139,7 +139,9 @@ function MyItinerary() {
 
               <div className="flex flex-col ml-5 bg-gray-200 p-2 rounded m-1 w-3/4 ">
                 <h3 className="text-left">{hotelData.name}</h3>
+                <div className="flex flex-row">
                 <ReviewRating className="ml-2" rating={hotelData.stars} />
+                </div>
               </div>
             </div>
           </div>

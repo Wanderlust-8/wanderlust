@@ -9,11 +9,11 @@ const StarRating = ({ rating }) => {
   return (
     <div className="flex flex-row">
       {Array.from({ length: fullStars }, (_, index) => (
-        <FaStar key={index} className="text-yellow-500 inline-flex" />
+        <FaStar key={index} className="text-yellow-500" />
       ))}
-      {hasHalfStar && <FaStarHalfAlt className="text-yellow-500 inline-flex" />}
+      {hasHalfStar && <FaStarHalfAlt className="text-yellow-500" />}
       {Array.from({ length: MAX_STARS - Math.ceil(rating) }, (_, index) => (
-        <FaRegStar key={index} className="text-yellow-500 inline-flex" />
+        <FaRegStar key={index} className="text-yellow-500" />
       ))}
     </div>
   );
