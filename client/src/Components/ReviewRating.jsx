@@ -7,7 +7,7 @@ const StarRating = ({ rating }) => {
   const hasHalfStar = rating - fullStars >= 0.5;
 
   return (
-    <>
+    <div className="flex flex-row">
       {Array.from({ length: fullStars }, (_, index) => (
         <FaStar key={index} className="text-yellow-500 inline-flex" />
       ))}
@@ -15,7 +15,7 @@ const StarRating = ({ rating }) => {
       {Array.from({ length: MAX_STARS - Math.ceil(rating) }, (_, index) => (
         <FaRegStar key={index} className="text-yellow-500 inline-flex" />
       ))}
-    </>
+    </div>
   );
 };
 
