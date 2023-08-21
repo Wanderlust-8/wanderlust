@@ -20,6 +20,7 @@ function Activities({ activity }) {
     //addNew(selectedActivity);
     const item = selectedActivity;
     console.log("actividad reservada", selectedActivity);
+    
 
     if (currentUser) {
       dispatch(add_to_cart(item));
