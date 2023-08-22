@@ -64,10 +64,14 @@ function NavBar() {
     }
   }
 
+ 
+
   return (
     <div className="flex flex-row p-5 h-24 z-50">
       <div className="flex flex-col">
-        <div className="mt-0 flex h-full w-[280px]    logo"></div>
+       
+        <Link to={"/home"} className="mt-0 flex h-full w-[280px]    logo"></Link>
+    
         {userEnStorage && userEnStorage.profile === 2 ? (
           <div className="flex items-end justify-end ">
             <span className=" text-xl fonte flex  text-gray-100 -my-1 fontPoppins ml-[10%]">

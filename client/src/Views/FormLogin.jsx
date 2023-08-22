@@ -76,6 +76,7 @@ const LoginPage = () => {
     setFormFilled(email && password); // si email y password tienen valor, formFilled es true
   }, [email, password]);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Regex for email validation
@@ -98,13 +99,20 @@ const LoginPage = () => {
       setErrorMsg("La contraseña debe tener al menos 6 caracteres.");
       return;
     }
-    try {
-      await login(email, password);
-      dispatch(loginUser(user), userShopping(currentUser.uid));
-    } catch (error) {
-      setErrorMsg(error.message);
-      console.log(error);
+
+    if(user1.forEach(el => el.email === email)){
+      try {
+        await login(email, password);
+        dispatch(loginUser(user), userShopping(currentUser.uid));
+      } catch (error) {
+        setErrorMsg(error.message);
+        console.log(error);
+      }
+
+    } else {
+      return window.alert("Debes registrarte primero.")
     }
+
   };
 
   const handleResetPasswordmodal = () => {

@@ -251,8 +251,8 @@ export default function SearchResult() {
               onChange={handlePriceFilterChange}
             >
               <option value="precios">---</option>
-              <option value="MenorPrecio">Mayor</option>
-              <option value="MayorPrecio">Menor</option>
+              <option value="MayorPrecio">Mayor</option>
+              <option value="MenorPrecio">Menor</option>
             </select>
           </div>
         </div>
