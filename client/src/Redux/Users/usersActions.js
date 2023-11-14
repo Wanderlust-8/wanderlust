@@ -52,7 +52,7 @@ export const addUser = (newUser) => {
     try {
       //console.log("ESTO ES USER:", newUser);
       const userResponse = await axios.post(
-        "https://backwanderlust-production.up.railway.app/users",
+        "https://wanderlust-coral.vercel.app/users",
         newUser
       );
       const user = userResponse.data;
@@ -62,7 +62,7 @@ export const addUser = (newUser) => {
         payload: user,
       });
       const cartResponse = await axios.post(
-        `https://backwanderlust-production.up.railway.app/shoppingCar/user/${user.uid}`
+        `https://wanderlust-coral.vercel.app/shoppingCar/user/${user.uid}`
       );
       dispatch(userShopping(user.uid));
       //   const response = await axios.get(
