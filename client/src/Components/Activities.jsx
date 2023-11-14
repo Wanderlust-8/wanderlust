@@ -33,7 +33,7 @@ function Activities({ activity }) {
 
   const guardarEnBDD = async (item) => {
     await fetch(
-     `https://backwanderlust-production.up.railway.app/shoppingCar/${idCart}`,
+     `https://wanderlust-coral.vercel.app/shoppingCar/${idCart}`,
      {
        method: "PUT",
        headers: { "Content-Type": "application/json" },
