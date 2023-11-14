@@ -5,7 +5,7 @@ export const ADD_HOTEL = "ADD_HOTEL";
 export const GET_HOTEL_BY_ID = "GET_HOTEL_BY_ID";
 export const SEARCH_HOTELS = "SEARCH_HOTELS";
 
-const URL = "https://backwanderlust-production.up.railway.app";
+const URL = "https://backwanderlust-production-2b66.up.railway.app";
 // const URL = "http://localhost:3002";
 
 export const fetchHotels = () => {

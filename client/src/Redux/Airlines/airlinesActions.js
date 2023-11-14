@@ -4,7 +4,7 @@ export const FETCH_AIRLINES = "FETCH_AIRLINES";
 export const ADD_AIRLINE = "ADD_AIRLINE";
 export const GET_AIRLINE_BY_ID = "GET_AIRLINE_BY_ID";
 export const SEARCH_AIRLINES = "SEARCH_AIRLINES";
-const URL = "https://backwanderlust-production.up.railway.app";
+const URL = "https://backwanderlust-production-2b66.up.railway.app";
 // const URL = "http://localhost:3002";
 
 export const fetchAirlines = () => {

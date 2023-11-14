@@ -6,7 +6,7 @@ export const GET_ACTIVITY_BY_ID = "GET_ACTIVITY_BY_ID";
 export const SEARCH_ACTIVITYS = "SEARCH_ACTIVITYS";
 export const ADD_ACTIVITYS = "ADD_ACTIVITYS";
 
-const URL = "https://backwanderlust-production.up.railway.app";
+const URL = "https://backwanderlust-production-2b66.up.railway.app";
 // const URL = "http://localhost:3002";
 
 export const fetchActivitys = () => {
