@@ -5,7 +5,7 @@ export const CREATE_ORDER = "CREATE_ORDER";
 export const GET_ALL_BILLS = "GET_ALL_BILLS";
 export const CREATE_ITINERARY = "CREATE_ITINERARY";
 
-const URL = "https://backwanderlust-production-2b66.up.railway.app";
+const URL = "https://wanderlust-coral.vercel.app";
 // const URL = "http://localhost:3002";
 
 //crear la factura

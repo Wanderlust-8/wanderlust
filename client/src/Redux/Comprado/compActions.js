@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const TRAER_FACTURAS_COMPRADAS = "TRAER_FACTURAS_COMPRADAS";
 
-const URL = "https://backwanderlust-production-2b66.up.railway.app";
+const URL = "https://wanderlust-coral.vercel.app";
 // const URL = "http://localhost:3002";
 
 export const traerFacturas = () => {

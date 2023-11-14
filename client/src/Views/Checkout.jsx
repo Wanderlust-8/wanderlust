@@ -58,8 +58,8 @@ export default function Checkout() {
       brand_name: "wanderlust.com",
       landing_page: "LOGIN",
       user_action: "PAY_NOW",
-      return_url: "https://backwanderlust-production-2b66.up.railway.app/payment/pay-order",
-      cancel_url: "https://backwanderlust-production-2b66.up.railway.app/payment/cancel-order",
+      return_url: "https://wanderlust-coral.vercel.app/payment/pay-order",
+      cancel_url: "https://wanderlust-coral.vercel.app/payment/cancel-order",
       current_user: currentUser.uid, //ACÁ HAY QUE TRAER EL UUID DEL CURRENT USER.
     },
   };

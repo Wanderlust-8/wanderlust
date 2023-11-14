@@ -19,7 +19,7 @@ export const PUT_PACKAGE = "PUT_PACKAGE";
 export const SEARCH_PACKAGES_ADMIN = "SEARCH_PACKAGES_ADMIN";
 export const FULL_PACKAGE = "FULL_PACKAGE";
 
-const URL = "https://backwanderlust-production-2b66.up.railway.app";
+const URL = "https://wanderlust-coral.vercel.app";
 // const URL = "http://localhost:3002";
 
 export const fetchPackages = () => {

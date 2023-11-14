@@ -4,7 +4,7 @@ export const FETCH_CONTINENTS = "FETCH_CONTINENTS";
 export const GET_CONTINENT_BY_ID = "GET_CONTINENT_BY_ID";
 export const SEARCH_CONTINENTS = "SEARCH_CONTINENTS";
 
-const URL = "https://backwanderlust-production-2b66.up.railway.app";
+const URL = "https://wanderlust-coral.vercel.app";
 // const URL = "http://localhost:3002";
 
 export const fetchContinents = () => {

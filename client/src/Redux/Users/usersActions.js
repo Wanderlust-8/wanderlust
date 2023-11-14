@@ -29,7 +29,7 @@ export const NEW_CART = "NEW_CART";
 //   };
 // };
 // const URL = "http://localhost:3002";
-const URL = "https://backwanderlust-production-2b66.up.railway.app";
+const URL = "https://wanderlust-coral.vercel.app";
 export const fetchUsers = () => {
   return async (dispatch) => {
     try {

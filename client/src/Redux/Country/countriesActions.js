@@ -5,7 +5,7 @@ export const ADD_COUNTRY = "ADD_COUNTRY";
 export const GET_COUNTRY_BY_ID = "GET_COUNTRY_BY_ID";
 export const SEARCH_COUNTRIES = "SEARCH_COUNTRIES";
 
-const URL = "https://backwanderlust-production-2b66.up.railway.app";
+const URL = "https://wanderlust-coral.vercel.app";
 // const URL = "http://localhost:3002";
 
 export const fetchCountries = () => {
